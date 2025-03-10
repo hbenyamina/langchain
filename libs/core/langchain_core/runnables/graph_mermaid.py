@@ -319,9 +319,9 @@ def _render_mermaid_using_api(
         raise ImportError(msg) from e
 
     # Use Mermaid API to render the image
-    mermaid_syntax_encoded = base64.b64encode(mermaid_syntax.encode("utf8")).decode(
-        "ascii"
-    )
+    mermaid_syntax_encoded = base64.urlsafe_b64encode(
+        mermaid_syntax.encode("utf8")
+    ).decode("ascii")
 
     # Check if the background color is a hexadecimal color code using regex
     if background_color is not None:
